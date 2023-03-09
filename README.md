@@ -5,6 +5,7 @@ My Django Rest Framework Application is a simple REST API that allows to manage 
 Requirements :
 
 Docker
+
 Git
 
 
