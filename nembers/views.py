@@ -34,10 +34,21 @@ def add_student(request):
 def update_student(request,id):
     query = Student.objects.filter(id=id)
     if(len(query)<=0):
-        return Response({'error':'any user with this id !'},status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error':'no user with this id !'},status=status.HTTP_400_BAD_REQUEST)
     serializer = StudentSerializers(query,data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
     return Response(serializer. errors,status=status.HTTP_400_BAD_REQUEST)
+
+#DELETE STUDENT
+@api_view(['DELETE'])
+@permission_classes([permissions.AllowAny])
+def delete_student(request,id):
+    query = Student.objects.filter(id=id)
+    if(query):
+        query.delete()
+        return Response({"msg":"student has been delected !"},status=status.HTTP_202_ACCEPTED)
+    else:
+        return Response({'error':'no user with this id !'},status=status.HTTP_400_BAD_REQUEST)
 
