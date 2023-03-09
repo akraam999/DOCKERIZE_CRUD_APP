@@ -25,5 +25,5 @@ Installation
         5-6 Change username and password for database in setting.py
     6- access to container of django project
     7- run this command python manage.py runserver
-    8- open your web browser and navigate to http://localhost:8000. From there, you can use the API to create, view, and delete posts.
+    8- open your web browser and navigate to http://localhost:8000. From there, you can use the API to create, view, and delete students.
     
