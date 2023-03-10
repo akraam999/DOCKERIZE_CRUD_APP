@@ -7,9 +7,9 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=manageApp
+      - POSTGRES_DB=manage
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=admin
+      - POSTGRES_PASSWORD=adminn
     ports:
       - 5432:5432
     networks:
@@ -27,7 +27,7 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgres://postgres:admin@db:5432/manageApp
+      DATABASE_URL: postgres://postgres:admin@db:5432/manage
 
 volumes:
   pgdb:
