@@ -77,15 +77,16 @@ WSGI_APPLICATION = 'manageApp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'manage',
+        'NAME': 'manageapp',
         'USER':'postgres',
-        'PASSWORD':'adminn',
+        'PASSWORD':'admin',
         'HOST':'db',
         'PORT':'5432',
     }
 }
 
 AUTH_USER_MODEL = "nembers.Admin"
+AUTH_USER_MODEL
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 

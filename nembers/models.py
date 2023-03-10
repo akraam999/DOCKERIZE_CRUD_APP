@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 
 class ClassLevel(models.Model):
@@ -17,8 +17,8 @@ class Project(models.Model):
     Title = models.CharField(max_length=255,null=255,blank=255)
     student = models.ManyToManyField(Student)
 
-class Admin(User):
-    username = models.CharField(max_length=100)
-    email = models.CharField(max_length=250)
-
+class Admin(AbstractUser):
+    pass
+    class Meta:
+        verbose_name_plural = "Admin"
     
