@@ -13,4 +13,8 @@ class classAdmin(admin.ModelAdmin):
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('Title',)
 
+@admin.register(Admin)
+class AdminAdmin(admin.ModelAdmin):
+    list_display = ('username','email','password')
+
 
