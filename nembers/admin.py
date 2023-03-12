@@ -16,7 +16,6 @@ class ProjectAdmin(admin.ModelAdmin):
 @admin.register(Admin)
 class AdminAdmin(admin.ModelAdmin):
     list_display = ('username','email','password')
-    class Meta: 
-        verbose_name_plural ="Admin"
+
 
 

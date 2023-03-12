@@ -18,20 +18,21 @@ def get_student(request):
 #ADD STUDENT
 @api_view(['POST'])
 @permission_classes([permissions.AllowAny])
-def add_student(request):
-    serializer = StudentSerializers(data=request.data)
-    if(serializer.is_valid()):
+def add_student(request,id):
+    class_level = ClassLevel.objects.get(id=id)
+    serializer = InfoStudent(data=request.data)
+    if serializer.is_valid():
         query = Student.objects.filter(email=request.data['email'])
-        if(len(query)>0):
+        if len(query)>0:
             content = {'error':'email deja existe !'}
             return Response(content,status=status.HTTP_400_BAD_REQUEST)
         else:
-            password = request.data.get('password')
+            password = request.data['password']
             password = make_password(password)
-            user = Student.objects.create(first_name=request.data.get('first_name'),last_name=request.data.get('last_name'),email=request.data.get('email'),password=password,classLevel=request.data.get('classLevel'))
-            serializer = StudentSerializers(user)
-            serializer.save()
-            return Response(serializer.data,status=status.HTTP_202_ACCEPTED)
+            user = Student.objects.create(first_name=request.data['first_name'],last_name=request.data['last_name'],email=request.data['email'],password=password,classLevel=class_level)
+            user.save()
+            seria = StudentSerializers(user)
+            return Response(seria.data,status=status.HTTP_202_ACCEPTED)
 
 #UPDATE STUDENT
 @api_view(['PUT'])
@@ -67,9 +68,6 @@ def add_admin(request):
         return Response({'error':'admin already exist !'},status=status.HTTP_400_BAD_REQUEST)
     serializer = AdminSerializers(data=request.data)
     if serializer.is_valid:
-        password = make_password(request.data.get('password'))
-        admin = Admin.objects.create(username=request.data.get('username'),email=request.data.get('email'),password=password)
-        serializer = AdminSerializers(admin)
         serializer.save()
         return Response({'status':'ok'},status=status.HTTP_200_OK)
     else:

@@ -7,9 +7,9 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_DB=manage
+      - POSTGRES_DB=bd_student
       - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=adminn
+      - POSTGRES_PASSWORD=admin
     ports:
       - 5432:5432
     networks:
@@ -18,16 +18,16 @@ services:
     build:
       context: .
     ports:
-      - "8000:8000"
+      - "8082:8082"
     networks:
       - mynetwork
     volumes:
-      - .:/project
-    command: python manage.py runserver 0.0.0.0:8000
+      - .:/ui
+    command: python manage.py runserver 0.0.0.0:8082
     depends_on:
       - db
     environment:
-      DATABASE_URL: postgres://postgres:admin@db:5432/manage
+      DATABASE_URL: postgres://postgres:admin@db:5432/bd_student
 
 volumes:
   pgdb:

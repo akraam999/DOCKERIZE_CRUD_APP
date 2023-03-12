@@ -19,6 +19,5 @@ class Project(models.Model):
 
 class Admin(AbstractUser):
     pass
-    class Meta:
-        verbose_name_plural = "Admin"
+
     

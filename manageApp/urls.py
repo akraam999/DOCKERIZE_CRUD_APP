@@ -10,7 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('get_student/',get_student,name="get_student"),
-    path('add_student/',add_student,name="add_student"),
+    path('add_student/<str:id>',add_student,name="add_student"),
     path('update_student/<str:id>',update_student,name="update_student"),
     path('add_admin/',add_admin,name="add_admin"),
 ]

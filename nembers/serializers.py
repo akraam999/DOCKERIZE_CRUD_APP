@@ -23,3 +23,9 @@ class AdminSerializers(serializers.ModelSerializer):
     class Meta:
         model = Admin
         fields = '__all__'
+        
+class InfoStudent(serializers.Serializer):
+    first_name = serializers.CharField()
+    last_name = serializers.CharField()
+    email = serializers.CharField()
+    password = serializers.CharField()
